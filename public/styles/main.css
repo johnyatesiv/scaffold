@@ -1,0 +1,27 @@
+#header {
+    width: 100%;
+    border: 1px solid black;
+    background-color: #ffd25a;
+    height: 15%;
+}
+
+#content {
+    background-image: url("http://previews.123rf.com/images/kremern1/kremern11105/kremern1110500029/9510707-Norwegian-fjord-Stock-Photo.jpg");
+    height: 70%;
+}
+
+#footer {
+    width: 100%;
+    border: 1px solid black;
+    background-color: #ffd25a;
+    height: 15%;
+}
+
+.navlink {
+    margin-right: 25%;
+}
+
+.footerBtn {
+    vertical-align: middle;
+    margin-right: 25%;
+}
