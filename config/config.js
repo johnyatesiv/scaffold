@@ -3,13 +3,13 @@ var config = {};
 /** Application **/
 config.settings = {};
 
-config.settings.name = "The Meadery";
-config.settings.port = 55800;
+config.settings.name = "My App";
+config.settings.port = 80;
 
 /** DataBase **/
 
 config.mongo = {};
 config.mongo.host = "localhost";
-config.mongo.database = "meadery";
+config.mongo.database = "";
 
 module.exports = config;

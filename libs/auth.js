@@ -17,28 +17,17 @@ var url = require('url');
  */
 
 function authenticate(req, res, next) {
-    var deferred = Q.defer();
+    next();
+}
 
-    if(req.params.auth) {
-        if(req.params.api) {
-            if(req.params.access) {
-                deferred.resolve(req.params.auth);
-            } else {
-                deferred.reject("please provide ACCESS token.");
-            }
-        } else {
-            deferred.reject("Please provide API token.");
-        }
-    } else {
-        deferred.reject("Unauthorized");
-    }
+function check(req) {
 
-    return deferred.promise;
 }
 
 var auth = {};
 
 /** Single Authorization **/
 auth.authenticate = authenticate;
+auth.check = check;
 
 module.exports = auth;

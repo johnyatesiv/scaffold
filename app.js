@@ -2,7 +2,7 @@
 
 /** Core Dependencies **/
 var express = require("express");
-var debug = require('debug')('api');
+var debug = require('debug')('app');
 
 /** Dependencies **/
 var auth = require("./libs/auth.js");
@@ -18,26 +18,27 @@ var http = require("http");
 //var privateKey  = fs.readFileSync('certs/ssl.key', 'utf8');
 //var certificate = fs.readFileSync('certs/ssl.crt', 'utf8');
 //var credentials = {key: privateKey, cert: certificate};
-var api = express();
+var app = express();
 var config = require('./config/config.js');
 
 /** Setup Functions **/
 
 function init() {
-    api.use(bodyParser.json()); // to support JSON-encoded bodies
-    api.use(bodyParser.urlencoded({extended: true}));   // to support URL-encoded bodies
-    api.use(bodyParser.urlencoded({extended: false}));
-    api.use(bodyParser.json());
-    api.use(auth.authenticate());
+    app.use(bodyParser.json()); // to support JSON-encoded bodies
+    app.use(bodyParser.urlencoded({extended: true}));   // to support URL-encoded bodies
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.json());
+    app.use(auth.authenticate);
 
     if(config.ssl) {
-        createSecureServer();
+        createSecureServer(app);
     } else {
-        createServer();
+        createServer(app);
     }
 
-    api.set('views', __dirname + '/views');
-    api.set('view engine', 'jade');
+    app.engine('html', require('ejs').renderFile);
+    app.set('view engine', 'html');
+    app.set('views', __dirname + '/public/views');
 
     process.on("uncaughtException", function(e) {
         if(e.stack) {
@@ -47,23 +48,23 @@ function init() {
         }
     });
 
-    routes(api);
+    routes(app);
 }
 
-function createServer() {
-    http.createServer(api).listen(config.settings.port, "localhost", function() {
+function createServer(app) {
+    http.createServer(app).listen(config.settings.port, "localhost", function() {
         debug(config.settings.name+" listening without SSL on port "+config.settings.port);
     });
 }
 
-function createSecureServer() {
-    https.createServer(credentials, api).listen(config.settings.port, "localhost", function() {
+function createSecureServer(app) {
+    https.createServer(credentials, app).listen(config.settings.port, "localhost", function() {
         debug(config.settings.name+" listening on port "+config.settings.port);
     });
 }
 
-function routes(api) {
-    api.post("/login", function(req, res, next) {
+function routes(app) {
+    app.post("/login", function(req, res, next) {
         auth.user(req).then(function(response) {
             res.send(response);
             next();
@@ -73,12 +74,12 @@ function routes(api) {
         });
     });
 
-    api.get('/', function(req, res) {
-        res.render('home.jade');
+    app.get('/', function(req, res) {
+        res.render('index.html');
     });
 }
 
 init();
 
-module.exports.api = api;
+module.exports.app = app;
 module.exports.express = express;
