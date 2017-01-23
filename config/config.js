@@ -3,13 +3,16 @@ var config = {};
 /** Application **/
 config.settings = {};
 
-config.settings.name = "My App";
-config.settings.port = 80;
+config.settings.name = "Fourth Estate";
+config.settings.port = 8000;
 
 /** DataBase **/
 
-config.mongo = {};
-config.mongo.host = "localhost";
-config.mongo.database = "";
+config.mysql = {
+    host: "127.0.0.1",
+    database: "fourthestate",
+    user: "root",
+    password: "password"
+};
 
 module.exports = config;

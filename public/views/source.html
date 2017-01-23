@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="/">Home</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/about">FAQs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/sources">Sources</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/forums">Forums</a>
+        </li>
+        <li class="nav-item">
+            <a id="login-btn" class="nav-link" href="#">Login</a>
+        </li>
+    </ul>
+</nav>
+<br>
+<div class="col-xl-12">
+    <div id="jumbotron1" class="jumbotron" style="text-align:center;">
+        <h2>{{source.name}}</h2><br>
+        <p>{{source.description}}</p>
+        <p>{{source.score}}</p>
+        <a class="btn btn-success" href="{{source.url}}">Visit Site</a>
+    </div>
+    <div class="col-xl-6">
+        <h4>Previous reviews:</h4>
+    </div>
+    <div class="col-xl-6">
+        <h4>Submit a new review for {{source.name}}:</h4>
+        <form id="newReview">
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="sourceId" value="{{source.id}}">
+            </div>
+            <div class="form-group">
+                <label for="url">Content URL</label>
+                <input type="text" class="form-control" id="url" placeholder="URL">
+            </div>
+
+            <div class="form-group">
+                <label for="url">Comments</label>
+                <input type="text" class="form-control" id="review" placeholder="URL">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

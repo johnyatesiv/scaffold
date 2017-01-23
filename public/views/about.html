@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .faq-card {
+            display:none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script>
+        function showFAQ(id) {
+            $(".active-faq").removeClass("active-faq").hide(200);
+            $("#"+id).show(200).addClass("active-faq");
+        };
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="/">Home</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/about">FAQs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sources">Sources</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/forums">Forums</a>
+            </li>
+            <li class="nav-item">
+                <a id="login-btn" class="nav-link" href="#">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <div id="jumbotron1" class="jumbotron" style="text-align:center;">
+        <h2>FAQs</h2><br>
+        Commonly asked questions and easy answers.
+    </div>
+    <div class="col-xl-12">
+        <div class="col-xl-2">
+            <ul class="list-group">
+                <li class="list-group-item"><a onclick="showFAQ('mission');" class="nav-link" href="#">Mission</a></li>
+                <li class="list-group-item"><a onclick="showFAQ('rating');" class="nav-link" href="#">Rating System</a></li>
+                <li class="list-group-item"><a onclick="showFAQ('contributing');" class="nav-link" href="#">Contributing</a></li>
+                <li class="list-group-item"><a onclick="showFAQ('appeal');" class="nav-link" href="#">Appeal Process</a></li>
+                <li class="list-group-item"><a onclick="showFAQ('api');" class="nav-link" href="#">API Docs</a></li>
+                <li class="list-group-item"><a onclick="showFAQ('thanks');" class="nav-link" href="#">Special Thanks</a></li>
+            </ul>
+        </div>
+        <div class="col-xl-10">
+            <div id="mission" class="card faq-card active-faq">
+                <div class="card-block">
+                    <h4 class="card-title">Mission</h4>
+                    <p class="card-text">
+                        4est is dedicated to providing a non-partisan community for review of online journalism.
+                    </p>
+                </div>
+            </div>
+            <div id="rating" class="card faq-card hidden">
+                <div class="card-block">
+                    <h4 class="card-title">Rating System</h4>
+                    <p class="card-text">
+                        Our metric takes into account the structural aspects of journalism.
+                    </p>
+                </div>
+            </div>
+            <div id="contributing" class="card faq-card hidden">
+                <div class="card-block">
+                    <h4 class="card-title">Contributing</h4>
+                    <p class="card-text">
+                        You can post your own reviews by creating an account, or you can assist
+                        in development by contributing on Github here: https://github.com/johnyatesiv/4est
+                    </p>
+                </div>
+            </div>
+            <div id="appeal" class="card faq-card hidden">
+                <div class="card-block">
+                    <h4 class="card-title">Appeal Process</h4>
+                    <p class="card-text">
+                        The author of a piece may contest a rating given by the community.
+                        In this case, the appeal will be submitted to an administrator for review.
+                        Individual reviews may also be flagged by the community for terms violations.
+                        If your review has been flagged, you may appeal to an administrator.
+                    </p>
+                </div>
+            </div>
+            <div id="api" class="card faq-card hidden">
+                <div class="card-block">
+                    <h4 class="card-title">API Docs</h4>
+                    <p class="card-text">
+                        If you would like to integrate with 4est, the API documentation
+                        is located here: [LINK]
+                    </p>
+                </div>
+            </div>
+            <div id="thanks" class="card faq-card hidden">
+                <div class="card-block">
+                    <h4 class="card-title">Special Thanks</h4>
+                    <p class="card-text">
+                        4est would like to thank those contributors who made this platform possible.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
